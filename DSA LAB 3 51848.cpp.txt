@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Product {
+    string name;
+    int code;
+    float price;
+};
+
+int main() {
+    int n;
+    cout << "Enter number of products: ";
+    cin >> n;
+
+    // Dynamically allocate memory
+    Product* products = new Product[n];
+
+    // Input product details
+    for (int i = 0; i < n; i++) {
+        cout << "\nProduct " << i + 1 << endl;
+        cout << "Name: ";
+        cin >> products[i].name;
+        cout << "Code: ";
+        cin >> products[i].code;
+        cout << "Price: ";
+        cin >> products[i].price;
+    }
+
+    // Display products
+    cout << "\n--- Product List ---\n";
+    for (int i = 0; i < n; i++) {
+        cout << "Name: " << products[i].name
+             << ", Code: " << products[i].code
+             << ", Price: " << products[i].price << endl;
+    }
+
+    // Free memory
+    delete[] products;
+    products = nullptr;
+
+    return 0;
+}
